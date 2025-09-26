@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Comfort Designs and Electronics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Comfort Designs and Electronics</h1>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html?category=digital">Digital Products</a></li>
+                                <li><a href="products.html?category=physical">Physical Products</a></li>
+                                <li><a href="products.html?category=services">Services</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search products..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="account-btn">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="products.html">Products</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current" id="breadcrumbProduct">Product Detail</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-layout">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="" alt="Product Image">
+                        <div class="image-zoom" id="imageZoom">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="thumbnail-images">
+                        <div class="thumbnail active" onclick="changeMainImage(this)">
+                            <img src="" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail" onclick="changeMainImage(this)">
+                            <img src="" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail" onclick="changeMainImage(this)">
+                            <img src="" alt="Thumbnail 3">
+                        </div>
+                        <div class="thumbnail" onclick="changeMainImage(this)">
+                            <img src="" alt="Thumbnail 4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <div class="product-header">
+                        <div class="product-badge" id="productBadge">Digital</div>
+                        <div class="product-actions">
+                            <button class="btn-icon" title="Add to Wishlist" onclick="toggleWishlist()">
+                                <i class="far fa-heart" id="wishlistIcon"></i>
+                            </button>
+                            <button class="btn-icon" title="Share" onclick="shareProduct()">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h1 id="productTitle">Product Title</h1>
+                    <p class="product-category" id="productCategory">Category</p>
+
+                    <div class="product-rating">
+                        <div class="stars" id="productStars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count" id="ratingCount">(24 reviews)</span>
+                        <a href="#reviews" class="rating-link">Read reviews</a>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price" id="currentPrice">$29.99</span>
+                        <span class="original-price" id="originalPrice" style="display: none;">$49.99</span>
+                        <span class="discount-badge" id="discountBadge" style="display: none;">20% OFF</span>
+                    </div>
+
+                    <div class="product-description" id="productDescription">
+                        <p>This is a detailed description of the product. It includes all the features, benefits, and specifications that customers need to know before making a purchase.</p>
+                    </div>
+
+                    <!-- Product Options -->
+                    <div class="product-options" id="productOptions">
+                        <!-- Options will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Quantity and Add to Cart -->
+                    <div class="product-purchase">
+                        <div class="quantity-selector">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="purchase-buttons">
+                            <button class="btn btn-primary btn-large" onclick="addToCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-large" onclick="buyNow()">
+                                <i class="fas fa-bolt"></i>
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Features -->
+                    <div class="product-features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <div>
+                                <h4>Free Shipping</h4>
+                                <p>On orders over $50</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-undo"></i>
+                            <div>
+                                <h4>30-Day Returns</h4>
+                                <p>Easy return policy</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Secure Payment</h4>
+                                <p>100% secure checkout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('description')">Description</button>
+                <button class="tab-btn" onclick="showTab('specifications')">Specifications</button>
+                <button class="tab-btn" onclick="showTab('reviews')">Reviews</button>
+                <button class="tab-btn" onclick="showTab('shipping')">Shipping & Returns</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-panel active" id="description-tab">
+                    <h3>Product Description</h3>
+                    <div id="detailedDescription">
+                        <p>This is a comprehensive description of the product. It provides detailed information about features, benefits, and use cases.</p>
+                        <ul>
+                            <li>High-quality materials and construction</li>
+                            <li>Modern design and functionality</li>
+                            <li>Easy to use and maintain</li>
+                            <li>Compatible with various devices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="specifications-tab">
+                    <h3>Specifications</h3>
+                    <div class="specifications-table">
+                        <div class="spec-row">
+                            <span class="spec-label">Brand</span>
+                            <span class="spec-value" id="specBrand">Comfort Designs and Electronics</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Model</span>
+                            <span class="spec-value" id="specModel">MP-001</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Dimensions</span>
+                            <span class="spec-value" id="specDimensions">10 x 8 x 2 inches</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value" id="specWeight">1.2 lbs</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Color</span>
+                            <span class="spec-value" id="specColor">Black</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Warranty</span>
+                            <span class="spec-value" id="specWarranty">1 Year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="reviews-tab">
+                    <h3>Customer Reviews</h3>
+                    <div class="reviews-summary">
+                        <div class="rating-overview">
+                            <div class="overall-rating">
+                                <span class="rating-number">4.8</span>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p>Based on 24 reviews</p>
+                            </div>
+                            <div class="rating-breakdown">
+                                <div class="rating-bar">
+                                    <span>5★</span>
+                                    <div class="bar">
+                                        <div class="fill" style="width: 80%"></div>
+                                    </div>
+                                    <span>19</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>4★</span>
+                                    <div class="bar">
+                                        <div class="fill" style="width: 20%"></div>
+                                    </div>
+                                    <span>5</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>3★</span>
+                                    <div class="bar">
+                                        <div class="fill" style="width: 0%"></div>
+                                    </div>
+                                    <span>0</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>2★</span>
+                                    <div class="bar">
+                                        <div class="fill" style="width: 0%"></div>
+                                    </div>
+                                    <span>0</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>1★</span>
+                                    <div class="bar">
+                                        <div class="fill" style="width: 0%"></div>
+                                    </div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list">
+                        <div class="review">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <div class="review-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="review-date">2 days ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Excellent product! Exceeded my expectations. The quality is outstanding and delivery was fast.</p>
+                            </div>
+                        </div>
+
+                        <div class="review">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Jane Smith</h4>
+                                        <div class="review-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <span class="review-date">1 week ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-content">
+                                <p>Great product overall. Minor issue with packaging but the product itself is perfect.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="shipping-tab">
+                    <h3>Shipping & Returns</h3>
+                    <div class="shipping-info">
+                        <div class="shipping-section">
+                            <h4>Shipping Information</h4>
+                            <ul>
+                                <li>Free shipping on orders over $50</li>
+                                <li>Standard shipping: 3-5 business days</li>
+                                <li>Express shipping: 1-2 business days</li>
+                                <li>International shipping available</li>
+                            </ul>
+                        </div>
+                        <div class="shipping-section">
+                            <h4>Return Policy</h4>
+                            <ul>
+                                <li>30-day return window</li>
+                                <li>Items must be in original condition</li>
+                                <li>Free return shipping</li>
+                                <li>Full refund within 5-7 business days</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Related Products</h2>
+                <a href="products.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="relatedProducts">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Comfort Designs and Electronics</h3>
+                    <p>Your one-stop destination for digital and physical products, plus professional services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="products.html?category=digital">Digital Products</a></li>
+                        <li><a href="products.html?category=physical">Physical Products</a></li>
+                        <li><a href="products.html?category=services">Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Comfort Designs and Electronics. All rights reserved.</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <span class="payment-text">PayNow • EcoCash • InnBucks • Bank Transfer</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Comfort Designs and Electronics </title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Comfort Designs and Electronics</h1>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html?category=digital">Digital Products</a></li>
+                                <li><a href="products.html?category=physical">Physical Products</a></li>
+                                <li><a href="products.html?category=services">Services</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search products..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="account-btn">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Confirmation Section -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-content">
+                <!-- Success Message -->
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1>Order Confirmed!</h1>
+                    <p class="success-text">Thank you for your order. We've received your payment and will process your order shortly.</p>
+                    <div class="order-reference">
+                        <strong>Order Reference:</strong> <span id="orderRef">MP-123456789</span>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="order-details">
+                    <div class="order-info">
+                        <h2>Order Information</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <h3>Order Date</h3>
+                                <p id="orderDate">December 25, 2024</p>
+                            </div>
+                            <div class="info-item">
+                                <h3>Payment Method</h3>
+                                <p id="paymentMethod">PayNow</p>
+                            </div>
+                            <div class="info-item">
+                                <h3>Total Amount</h3>
+                                <p id="totalAmount">$129.99</p>
+                            </div>
+                            <div class="info-item">
+                                <h3>Status</h3>
+                                <p class="status confirmed">Confirmed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h2>Shipping Information</h2>
+                        <div class="shipping-details">
+                            <p><strong>Name:</strong> <span id="customerName">John Doe</span></p>
+                            <p><strong>Address:</strong> <span id="shippingAddress">123 Main Street, Harare, Zimbabwe</span></p>
+                            <p><strong>Phone:</strong> <span id="customerPhone">+263 77 123 4567</span></p>
+                            <p><strong>Email:</strong> <span id="customerEmail">john@example.com</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="order-items">
+                    <h2>Order Items</h2>
+                    <div class="items-list" id="orderItemsList">
+                        <!-- Order items will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="next-steps">
+                    <h2>What's Next?</h2>
+                    <div class="steps-timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Order Confirmed</h3>
+                                <p>Your order has been received and payment confirmed</p>
+                                <span class="timeline-time">Just now</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Processing</h3>
+                                <p>We're preparing your order for shipment</p>
+                                <span class="timeline-time">Within 24 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Shipped</h3>
+                                <p>Your order is on its way to you</p>
+                                <span class="timeline-time">1-2 business days</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Delivered</h3>
+                                <p>Your order has been delivered</p>
+                                <span class="timeline-time">3-5 business days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Downloads -->
+                <div class="digital-downloads" id="digitalDownloads" style="display: none;">
+                    <h2>Digital Downloads</h2>
+                    <p>Your digital products are ready for download:</p>
+                    <div class="download-list">
+                        <!-- Digital downloads will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="confirmation-actions">
+                    <a href="products.html" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        Continue Shopping
+                    </a>
+                    <a href="account.html" class="btn btn-outline">
+                        <i class="fas fa-user"></i>
+                        View Order History
+                    </a>
+                    <button class="btn btn-outline" onclick="printOrder()">
+                        <i class="fas fa-print"></i>
+                        Print Order
+                    </button>
+                </div>
+
+                <!-- Support -->
+                <div class="support-section">
+                    <h2>Need Help?</h2>
+                    <p>If you have any questions about your order, our support team is here to help.</p>
+                    <div class="support-options">
+                        <a href="contact.html" class="support-option">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact Support</span>
+                        </a>
+                        <a href="tel:+263772824132" class="support-option">
+                            <i class="fas fa-phone"></i>
+                            <span>Call Us</span>
+                        </a>
+                        <a href="faq.html" class="support-option">
+                            <i class="fas fa-question-circle"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Comfort Designs and Electronics</h3>
+                    <p>Your one-stop destination for digital and physical products, plus professional services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="products.html?category=digital">Digital Products</a></li>
+                        <li><a href="products.html?category=physical">Physical Products</a></li>
+                        <li><a href="products.html?category=services">Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Comfort Designs and Electronics. All rights reserved.</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <span class="payment-text">PayNow • EcoCash • InnBucks • Bank Transfer</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Get order reference from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderRef = urlParams.get('ref') || 'MP-123456789';
+        
+        // Update order reference
+        document.getElementById('orderRef').textContent = orderRef;
+        
+        // Update order date
+        document.getElementById('orderDate').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        // Load order data from localStorage (in a real app, this would come from the server)
+        const orderData = JSON.parse(localStorage.getItem('lastOrder')) || {
+            paymentMethod: 'PayNow',
+            totalAmount: 129.99,
+            customer: {
+                name: 'John Doe',
+                address: '123 Main Street, Harare, Zimbabwe',
+                phone: '+263 77 123 4567',
+                email: 'john@example.com'
+            },
+            items: [
+                {
+                    title: 'Premium Design Template',
+                    price: 29.99,
+                    quantity: 1,
+                    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+                    category: 'digital'
+                },
+                {
+                    title: 'Wireless Headphones',
+                    price: 89.99,
+                    quantity: 1,
+                    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+                    category: 'physical'
+                }
+            ]
+        };
+        
+        // Update order information
+        document.getElementById('paymentMethod').textContent = orderData.paymentMethod;
+        document.getElementById('totalAmount').textContent = `$${orderData.totalAmount.toFixed(2)}`;
+        document.getElementById('customerName').textContent = orderData.customer.name;
+        document.getElementById('shippingAddress').textContent = orderData.customer.address;
+        document.getElementById('customerPhone').textContent = orderData.customer.phone;
+        document.getElementById('customerEmail').textContent = orderData.customer.email;
+        
+        // Populate order items
+        const orderItemsList = document.getElementById('orderItemsList');
+        orderItemsList.innerHTML = orderData.items.map(item => `
+            <div class="order-item">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="item-details">
+                    <h3>${item.title}</h3>
+                    <p class="item-category">${item.category.charAt(0).toUpperCase() + item.category.slice(1)} Product</p>
+                    <p class="item-quantity">Quantity: ${item.quantity}</p>
+                </div>
+                <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+            </div>
+        `).join('');
+        
+        // Show digital downloads if any
+        const digitalItems = orderData.items.filter(item => item.category === 'digital');
+        if (digitalItems.length > 0) {
+            const digitalDownloads = document.getElementById('digitalDownloads');
+            digitalDownloads.style.display = 'block';
+            
+            const downloadList = digitalDownloads.querySelector('.download-list');
+            downloadList.innerHTML = digitalItems.map(item => `
+                <div class="download-item">
+                    <div class="download-info">
+                        <h4>${item.title}</h4>
+                        <p>Ready for download</p>
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="downloadFile('${item.title}')">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        function downloadFile(filename) {
+            // In a real app, this would trigger the actual download
+            alert(`Downloading ${filename}...`);
+        }
+        
+        function printOrder() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

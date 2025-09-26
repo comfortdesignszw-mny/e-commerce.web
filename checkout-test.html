@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Test - Comfort Designs and Electronics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .debug-panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10000;
+        }
+        .debug-panel h4 {
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+        .debug-panel button {
+            background: #333;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Debug Panel -->
+    <div class="debug-panel">
+        <h4>Debug Panel</h4>
+        <button onclick="addTestData()">Add Test Data</button>
+        <button onclick="testNextStep()">Test Next Step</button>
+        <button onclick="testPrevStep()">Test Prev Step</button>
+        <button onclick="clearDebug()">Clear</button>
+        <div id="debugLog"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Comfort Designs and Electronics</h1>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html?category=digital">Digital Products</a></li>
+                                <li><a href="products.html?category=physical">Physical Products</a></li>
+                                <li><a href="products.html?category=services">Services</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search products..." class="search-input">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="account-btn">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="cart.html">Cart</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Checkout</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-header">
+                <h1>Checkout</h1>
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Information</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-layout">
+                <!-- Checkout Form -->
+                <div class="checkout-form-container">
+                    <form id="checkoutForm" class="checkout-form">
+                        <!-- Step 1: Customer Information -->
+                        <div class="checkout-step active" id="step1">
+                            <div class="step-header">
+                                <h2>Customer Information</h2>
+                                <p>Please provide your contact details</p>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Contact Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" required value="test@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number *</label>
+                                        <input type="tel" id="phone" name="phone" required value="+263 77 123 4567">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Billing Address</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required value="John">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required value="Doe">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Street Address *</label>
+                                    <input type="text" id="address" name="address" required value="123 Main Street">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city">City *</label>
+                                        <input type="text" id="city" name="city" required value="Harare">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="postalCode">Postal Code *</label>
+                                        <input type="text" id="postalCode" name="postalCode" required value="0000">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <select id="country" name="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="ZW" selected>Zimbabwe</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="US">United States</option>
+                                        <option value="GB">United Kingdom</option>
+                                        <option value="ZA">South Africa</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="saveInfo" name="saveInfo">
+                                    <span class="checkmark"></span>
+                                    Save this information for next time
+                                </label>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                    Continue to Payment
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Payment Method -->
+                        <div class="checkout-step" id="step2">
+                            <div class="step-header">
+                                <h2>Payment Method</h2>
+                                <p>Choose your preferred payment method</p>
+                            </div>
+
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="paynow" name="paymentMethod" value="paynow" checked>
+                                    <label for="paynow" class="payment-option">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-qrcode"></i>
+                                        </div>
+                                        <div class="payment-info">
+                                            <h3>PayNow</h3>
+                                            <p>Pay instantly with QR code or mobile number</p>
+                                        </div>
+                                        <div class="payment-radio">
+                                            <span class="radio-circle"></span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="payment-method">
+                                    <input type="radio" id="ecocash" name="paymentMethod" value="ecocash">
+                                    <label for="ecocash" class="payment-option">
+                                        <div class="payment-icon ecocash">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <div class="payment-info">
+                                            <h3>EcoCash</h3>
+                                            <p>Pay with your EcoCash mobile wallet</p>
+                                        </div>
+                                        <div class="payment-radio">
+                                            <span class="radio-circle"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- PayNow Specific Fields -->
+                            <div class="payment-details" id="paynowDetails">
+                                <h3>PayNow Payment Details</h3>
+                                <div class="paynow-info">
+                                    <div class="qr-code-container">
+                                        <div class="qr-code">
+                                            <i class="fas fa-qrcode"></i>
+                                            <p>QR Code will appear here</p>
+                                        </div>
+                                        <div class="qr-info">
+                                            <p><strong>Amount:</strong> <span id="paynowAmount">$0.00</span></p>
+                                            <p><strong>Reference:</strong> <span id="paynowRef">MP-123456</span></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="paynow-instructions">
+                                        <h4>How to pay with PayNow:</h4>
+                                        <ol>
+                                            <li>Open your banking app</li>
+                                            <li>Scan the QR code above or enter our PayNow ID</li>
+                                            <li>Enter the amount and reference number</li>
+                                            <li>Complete the payment</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EcoCash Specific Fields -->
+                            <div class="payment-details" id="ecocashDetails" style="display: none;">
+                                <h3>EcoCash Payment Details</h3>
+                                <div class="form-group">
+                                    <label for="ecocashNumber">EcoCash Number *</label>
+                                    <input type="tel" id="ecocashNumber" name="ecocashNumber" placeholder="+263 77 123 4567">
+                                </div>
+                                <div class="ecocash-info">
+                                    <p><strong>Amount:</strong> <span id="ecocashAmount">$0.00</span></p>
+                                    <p><strong>Reference:</strong> <span id="ecocashRef">MP-123456</span></p>
+                                </div>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-outline" onclick="prevStep()">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back to Information
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">
+                                    Review Order
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Order Confirmation -->
+                        <div class="checkout-step" id="step3">
+                            <div class="step-header">
+                                <h2>Review Your Order</h2>
+                                <p>Please review your order details before confirming</p>
+                            </div>
+
+                            <div class="order-summary">
+                                <div class="order-items" id="orderItems">
+                                    <!-- Order items will be populated here -->
+                                </div>
+                                
+                                <div class="order-totals">
+                                    <div class="total-line">
+                                        <span>Subtotal:</span>
+                                        <span id="orderSubtotal">$0.00</span>
+                                    </div>
+                                    <div class="total-line">
+                                        <span>Shipping:</span>
+                                        <span id="orderShipping">$0.00</span>
+                                    </div>
+                                    <div class="total-line">
+                                        <span>Tax:</span>
+                                        <span id="orderTax">$0.00</span>
+                                    </div>
+                                    <div class="total-line total">
+                                        <span>Total:</span>
+                                        <span id="orderTotal">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-notes">
+                                <h3>Order Notes</h3>
+                                <textarea id="orderNotes" placeholder="Any special instructions for your order..."></textarea>
+                            </div>
+
+                            <div class="terms-agreement">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-outline" onclick="prevStep()">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back to Payment
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-large" id="placeOrderBtn">
+                                    <i class="fas fa-lock"></i>
+                                    Place Order
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="order-summary-sidebar">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Summary items will be populated here -->
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="summary-line">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-line">
+                                <span>Shipping:</span>
+                                <span id="summaryShipping">$0.00</span>
+                            </div>
+                            <div class="summary-line">
+                                <span>Tax:</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            <div class="summary-line total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Secure Checkout</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i>
+                                <span>SSL Encrypted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+    <script>
+        // Debug functions
+        function addTestData() {
+            const testCart = [
+                {
+                    id: 1,
+                    title: 'Test Product 1',
+                    price: 29.99,
+                    quantity: 1,
+                    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+                    category: 'digital'
+                },
+                {
+                    id: 2,
+                    title: 'Test Product 2',
+                    price: 49.99,
+                    quantity: 2,
+                    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+                    category: 'physical'
+                }
+            ];
+            
+            localStorage.setItem('cart', JSON.stringify(testCart));
+            localStorage.setItem('checkoutCart', JSON.stringify(testCart));
+            
+            logDebug('Test data added to cart');
+            
+            // Reload the page to test
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        }
+        
+        function testNextStep() {
+            logDebug('Testing nextStep()...');
+            nextStep();
+        }
+        
+        function testPrevStep() {
+            logDebug('Testing prevStep()...');
+            prevStep();
+        }
+        
+        function clearDebug() {
+            document.getElementById('debugLog').innerHTML = '';
+        }
+        
+        function logDebug(message) {
+            const debugLog = document.getElementById('debugLog');
+            const time = new Date().toLocaleTimeString();
+            debugLog.innerHTML += `<div>[${time}] ${message}</div>`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+        }
+        
+        // Override console.log to show in debug panel
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logDebug(args.join(' '));
+        };
+        
+        // Log when page loads
+        logDebug('Checkout test page loaded');
+    </script>
+</body>
+</html>
